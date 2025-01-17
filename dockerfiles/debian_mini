@@ -13,7 +13,8 @@ RUN apt-get -y install apt-utils gcc \
 
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+ENV PATH="$HOME/.cargo/bin:${PATH}"
+RUN ls -l /root/.cargo/bin/cargo
 # Source the cargo environment and install rtw-tui
 #RUN . "/root/.cargo/env" && \
 RUN cargo install rtw-tui
