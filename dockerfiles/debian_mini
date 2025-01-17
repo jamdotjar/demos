@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Update and install dependencies
 RUN apt-get clean && apt-get update && apt-get -y upgrade
-RUN apt-get -y install apt-utils gcc \
+RUN apt-get -y install apt-utils gcc git \
     python3 vim unzip nodejs \
     fakeroot dbus base whiptail hexedit \
     patch wamerican ucf manpages \
@@ -17,7 +17,7 @@ ENV PATH="$HOME/.cargo/bin:${PATH}"
 RUN ls -l /root/.cargo/bin/cargo
 # Source the cargo environment and install rtw-tui
 #RUN . "/root/.cargo/env" && \
-RUN /root/.cargo/bin/cargo install rtw-tui
+RUN git clone "https://github.com/jamdotjar/rtweekend-tui"
 
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
