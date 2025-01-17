@@ -14,11 +14,15 @@ RUN apt-get -y install apt-utils gcc \
 # Install Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH="/root/.cargo/bin:${PATH}"
-RUN . "$HOME/.cargo/env"
+ENV CARGO_HOME="/root/.cargo"
+ENV RUSTUP_HOME="/root/.rustup"
 
-# Install rtw-tui
-# RUN cargo install rtw-tui
-RUN $HOME/.cargo/env install rtw-tui
+RUN rustc --version && cargo --version
+
+
+# Source the cargo environment and install rtw-tui
+RUN . "/root/.cargo/env" && \
+    cargo install rtw-tui
 
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
