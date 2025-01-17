@@ -17,12 +17,13 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 ENV CARGO_HOME="/root/.cargo"
 ENV RUSTUP_HOME="/root/.rustup"
 
-RUN rustc --version && cargo --version
+RUN . "$HOME/.cargo/env" && \
+    echo "PATH is: $PATH" && \
 
 
 # Source the cargo environment and install rtw-tui
-RUN . "/root/.cargo/env" && \
-    cargo install rtw-tui
+#RUN . "/root/.cargo/env" && \
+#    cargo install rtw-tui
 
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
