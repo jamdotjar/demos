@@ -17,7 +17,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN . "$HOME/.cargo/env"
 
 # Install rtw-tui
-RUN cargo install rtw-tui
+# RUN cargo install rtw-tui
 RUN $HOME/.cargo/env install rtw-tui
 
 # Create user
