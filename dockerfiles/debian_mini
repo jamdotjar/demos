@@ -23,7 +23,7 @@ RUN . "$HOME/.cargo/env" && \
 
 # Source the cargo environment and install rtw-tui
 #RUN . "/root/.cargo/env" && \
-   cargo install rtw-tui
+   RUN cargo install rtw-tui
 
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
