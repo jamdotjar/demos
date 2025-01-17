@@ -17,7 +17,7 @@ ENV PATH="$HOME/.cargo/bin:${PATH}"
 RUN ls -l /root/.cargo/bin/cargo
 # Source the cargo environment and install rtw-tui
 #RUN . "/root/.cargo/env" && \
-RUN cargo install rtw-tui
+RUN /root/.cargo/bin/cargo install rtw-tui
 
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
