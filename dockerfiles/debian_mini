@@ -18,7 +18,7 @@ ENV CARGO_HOME="/root/.cargo"
 ENV RUSTUP_HOME="/root/.rustup"
 
 RUN . "$HOME/.cargo/env" && \
-    echo "PATH is: $PATH" && \
+    echo "PATH is: $PATH" &&
 
 
 # Source the cargo environment and install rtw-tui
