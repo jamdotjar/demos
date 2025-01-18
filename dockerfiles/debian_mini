@@ -11,14 +11,6 @@ RUN apt-get -y install apt-utils gcc git \
     less cowsay netcat-openbsd \
     build-essential pkg-config libssl-dev
 
-# Install Rust
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="$HOME/.cargo/bin:${PATH}"
-RUN ls -l /root/.cargo/bin/cargo
-# Source the cargo environment and install rtw-tui
-#RUN . "/root/.cargo/env" && \
-RUN git clone "https://github.com/jamdotjar/rtweekend-tui"
-
 # Create user
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
